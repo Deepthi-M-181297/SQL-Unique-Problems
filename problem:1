@@ -72,11 +72,12 @@ join orders o
 on r.id = o.restaurant_id
 )
 select 
+	name,
 	dispatch_times,
-	name,count(*) as count
+	count(*) as count
 from cte1
 group by 1,2
-order by 1,2
+order by 1
 
 
 
