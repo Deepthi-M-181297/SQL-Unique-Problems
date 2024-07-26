@@ -2,7 +2,8 @@
 
 Here, I am solving different SQL problems with solutions for interview preparation. And the datasets are gathered from different sites and channels.
 
-Problem 1:
+##Problem 1:
+
 You are given two tables: Restaurants and Orders. After receiving an order, 
 each restaurant has 15 minutes to dispatch it. Dispatch times are categorized as follows:
 
