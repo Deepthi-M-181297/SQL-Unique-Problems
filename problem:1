@@ -78,3 +78,8 @@ from cte1
 group by 1,2
 order by 1,2
 
+
+
+
+
+
