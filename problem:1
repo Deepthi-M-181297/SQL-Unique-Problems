@@ -53,6 +53,7 @@ Task: Write an SQL query to count the number of dispatched orders in each catego
 SELECT * FROM restaurants;
 SELECT * FROM orders;
 
+
 with cte1 as
 (
 select 
@@ -62,24 +63,25 @@ select
 	o.dispatch_time,
 	dispatch_time - order_time as diff,
 (case
-		when (dispatch_time - order_time) <= '00:15:00' then 'on-time-dispatch'
+		when (dispatch_time - order_time) <= '00:15:00' then 'on_time_dispatch'
 		when (dispatch_time - order_time) between '00:15:00' and '00:20:00' then 'late_dispatch'
-		else 'super_late_dispatch'
+		else 'super_late_dispatch' 
 end) as dispatch_times
 
 from restaurants r
 join orders o
 on r.id = o.restaurant_id
 )
+
 select 
+	restaurant_id,
 	name,
-	dispatch_times,
-	count(*) as count
+	count(case when dispatch_times = 'on_time_dispatch' then 1 end)as on_time_dispatch_cnt,
+	count(case when dispatch_times = 'late_dispatch' then 1 end)as late_dispatch_cnt,
+	count(case when dispatch_times = 'super_late_dispatch' then 1 end)as super_late_dispatch_cnt
 from cte1
 group by 1,2
 order by 1
-
-
 
 
 
