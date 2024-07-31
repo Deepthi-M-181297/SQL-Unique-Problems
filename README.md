@@ -16,3 +16,7 @@ Task: Write an SQL query to count the number of dispatched orders in each catego
 Problem 2:
 
 write a query to find users whose transactions has breached their credit limit from the given dataset.
+
+##
+Problem 3:
+write a query to remove the special character email address in the given dataset.
