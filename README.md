@@ -26,3 +26,7 @@ write a query to remove the special character email address in the given dataset
 Problem 4:
 
 write the query to find users and their productivity time in hours, where productivity time = logout time - login time
+
+##
+Problem 5:
+write a query to find consecutive days in a given start_date and end_date.
