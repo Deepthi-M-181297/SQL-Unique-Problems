@@ -1,0 +1,40 @@
+DROP TABLE IF EXISTS Schedule;
+
+CREATE TABLE Schedule
+(
+	Task_ID INT,
+	Start_Date DATE,
+	End_Date DATE
+)
+
+INSERT INTO Schedule VALUES 
+
+(1,'2023-10-01','2023-10-02'),
+(2,'2023-10-02','2023-10-03'),
+(3,'2023-10-03','2023-10-04'),
+(4,'2023-10-13','2023-10-14'),
+(5,'2023-10-14','2023-10-15'),
+(6,'2023-10-28','2023-10-29'),
+(7,'2023-10-30','2023-10-31'); 
+
+SELECT * FROM Schedule;
+
+with cte1 as
+(
+	select start_date from schedule
+	where start_date not in (select end_date from schedule)
+),
+cte2 as
+(
+	select end_date from schedule
+	where end_date not in (select start_date from schedule)
+),
+join1 as
+(
+	select cte1.start_date,cte2.end_date,row_number()over(partition by cte1.start_date order by cte1.start_date)as rn
+	from cte1	
+	cross join cte2
+	where cte1.start_date < cte2.end_date
+)
+select start_date,end_date from join1 
+where rn =1 
