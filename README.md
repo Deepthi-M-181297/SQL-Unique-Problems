@@ -30,3 +30,8 @@ write the query to find users and their productivity time in hours, where produc
 ##
 Problem 5:
 write a query to find consecutive days in a given start_date and end_date.
+
+##
+Problem 6:
+Imagine each order's item has been mistakenly swapped with the next—our task is to use Common Table Expressions (CTEs) to realign the order IDs with the correct items. Follow along as we solve this problem step-by-step and ensure data integrity.
+
