@@ -1,0 +1,26 @@
+CREATE TABLE orders_hotel(
+    order_id INT PRIMARY KEY,
+    item VARCHAR(255) NOT NULL
+);
+
+INSERT INTO orders_hotel (order_id, item) VALUES
+(1, 'Chow Mein'),
+(2, 'Pizza'),
+(3, 'Veg Nuggets'),
+(4, 'Paneer Butter Masala'),
+(5, 'Spring Rolls'),
+(6, 'Veg Burger'),
+(7, 'Paneer Tikka');
+
+select * from orders_hotel
+with cte1 as
+(
+select count(order_id)as total_count from orders_hotel
+)
+select 
+	case when order_id%2!=0 and order_id!=total_count then order_id+1 
+	when order_id%2!=0 and order_id=total_count then order_id
+	else order_id-1 end as corrected_id,item
+from orders_hotel
+cross join cte1
+order by corrected_id
